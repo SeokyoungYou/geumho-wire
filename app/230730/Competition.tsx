@@ -51,25 +51,15 @@ export default function Competition({ data }: CompetitionProps) {
 
                 <CopyButton value={data.addressDetails}>
                   {({ copied, copy }) => (
-                    <Popover
-                      width={250}
-                      position="bottom"
-                      withArrow
-                      shadow="sm"
-                    >
-                      <Popover.Target>
-                        <button onClick={copy}>
-                          <Text size="sm">{data.addressDetails}</Text>
-                          <Flex align="center" gap="xs">
-                            <Text size="sm">({data.competitionLocation})</Text>
-                            <IconCopy size="1rem" color="skyblue" />
-                          </Flex>
-                        </button>
-                      </Popover.Target>
-                      <Popover.Dropdown>
-                        <Text size="sm">{data.copiedAddress}</Text>
-                      </Popover.Dropdown>
-                    </Popover>
+                    <button onClick={copy}>
+                      <Text size="sm">{data.addressDetails}</Text>
+                      <Flex align="center" gap="xs">
+                        <Text size="sm">({data.competitionLocation})</Text>
+                        <Text size="sm" color={copied ? "teal" : "blue"}>
+                          {copied ? "Copied" : "Copy"}
+                        </Text>
+                      </Flex>
+                    </button>
                   )}
                 </CopyButton>
               </Flex>
