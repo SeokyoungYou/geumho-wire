@@ -10,7 +10,20 @@ import {
 } from "@mantine/core";
 import { IconCopy } from "@tabler/icons-react";
 
-export default function Competition({ data }) {
+type CompetitionProps = {
+  data: {
+    competitionTitle: string;
+    competitionDate: string;
+    competitionLocation: string;
+    address: string;
+    addressDetails: string;
+    copiedAddress: string;
+    link: string;
+    linkDetails: string;
+  };
+};
+
+export default function Competition({ data }: CompetitionProps) {
   return (
     <Accordion chevronPosition="right" variant="contained">
       <Accordion.Item value="competition">

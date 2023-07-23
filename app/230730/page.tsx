@@ -57,15 +57,7 @@ export default function Page() {
   ));
 
   return (
-    <main className="flex min-h-screen flex-col p-2 gap-4">
-      <Switch
-        onLabel="영어(EN)"
-        offLabel="한국어(KO)"
-        label={locale === Locale.ko ? "Change Language" : "언어 변경하기"}
-        onChange={(event) => {
-          setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
-        }}
-      />
+    <main className="flex min-h-screen flex-col p-2 gap-4 relative">
       <section>
         <Competition data={t.competition} />
       </section>
@@ -111,6 +103,18 @@ export default function Page() {
             />
           </Modal>
         )}
+      </section>
+      <section className="fixed bottom-0 self-center w-full p-3 bg-slate-100">
+        <Switch
+          labelPosition="left"
+          size="md"
+          onLabel="영어(EN)"
+          offLabel="한국어(KO)"
+          label={locale === Locale.ko ? "Change Language" : "언어 변경하기"}
+          onChange={(event) => {
+            setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
+          }}
+        />
       </section>
     </main>
   );
