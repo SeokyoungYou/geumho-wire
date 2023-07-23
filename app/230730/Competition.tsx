@@ -8,7 +8,8 @@ import {
   Popover,
   Text,
 } from "@mantine/core";
-import { IconCopy } from "@tabler/icons-react";
+import { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 type CompetitionProps = {
   data: {
@@ -24,6 +25,7 @@ type CompetitionProps = {
 };
 
 export default function Competition({ data }: CompetitionProps) {
+  const [copied, setCopied] = useState(false);
   return (
     <Accordion chevronPosition="right" variant="contained">
       <Accordion.Item value="competition">
@@ -48,20 +50,20 @@ export default function Competition({ data }: CompetitionProps) {
             <List.Item>
               <Flex align="center" gap="sm">
                 <Text size="sm">{data.address}</Text>
-
-                <CopyButton value={data.addressDetails}>
-                  {({ copied, copy }) => (
-                    <button onClick={copy}>
-                      <Text size="sm">{data.addressDetails}</Text>
-                      <Flex align="center" gap="xs">
-                        <Text size="sm">({data.competitionLocation})</Text>
-                        <Text size="sm" color={copied ? "teal" : "blue"}>
-                          {copied ? "Copied" : "Copy"}
-                        </Text>
-                      </Flex>
-                    </button>
-                  )}
-                </CopyButton>
+                <CopyToClipboard
+                  text={data.addressDetails}
+                  onCopy={() => setCopied(true)}
+                >
+                  <button>
+                    <Text size="sm">{data.addressDetails}</Text>
+                    <Flex align="center" gap="xs">
+                      <Text size="sm">({data.competitionLocation})</Text>
+                      <Text size="sm" color={copied ? "teal" : "blue"}>
+                        {copied ? "Copied" : "Copy"}
+                      </Text>
+                    </Flex>
+                  </button>
+                </CopyToClipboard>
               </Flex>
             </List.Item>
             <List.Item>
