@@ -1,0 +1,52 @@
+{
+  "table": {
+    "title": "금호 와이어 주짓수 대진표",
+    "name": "이름",
+    "time": "시간",
+    "mat": "매트",
+    "leagueTable": "대진표 사진",
+    "division": "급수",
+    "competition": "대회",
+    "buttonText": "하늘색 버튼을 눌러 사진을 확인하세요"
+  },
+  "competition": {
+    "competitionTitle": "스트릿 주짓수 서울 오픈",
+    "competitionDate": "2023.07.30(일) 9:30 AM",
+    "competitionLocation": "SETEC 2 전시장",
+    "address": "주소",
+    "addressDetails": "서울특별시 강남구 남부순환로 3104",
+    "copiedAddress": "주소가 복사되었습니다.",
+    "link": "링크",
+    "linkDetails": "대회 상세 페이지로 이동하기"
+  },
+  "competitors": [
+    {
+      "name": "이승영",
+      "time": "13:11",
+      "mat": "3 매트",
+      "division": "화이트 -70",
+      "leagueTable": "/og-img.jpeg"
+    },
+    {
+      "name": "이준규",
+      "time": "13:11",
+      "mat": "3 매트",
+      "division": "화이트 -70",
+      "leagueTable": "/og-img.jpeg"
+    },
+    {
+      "name": "벤",
+      "time": "13:11",
+      "mat": "3 매트",
+      "division": "화이트 -82.3",
+      "leagueTable": "/og-img.jpeg"
+    },
+    {
+      "name": "유서경",
+      "time": "12:31",
+      "mat": "1 매트",
+      "division": "화이트 -58.5",
+      "leagueTable": "/og-img.jpeg"
+    }
+  ]
+}

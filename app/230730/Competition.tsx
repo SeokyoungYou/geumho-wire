@@ -1,20 +1,16 @@
 import {
   Accordion,
-  ActionIcon,
   Avatar,
-  Button,
-  Center,
   CopyButton,
   Flex,
   Group,
   List,
   Popover,
   Text,
-  Tooltip,
 } from "@mantine/core";
 import { IconCopy } from "@tabler/icons-react";
 
-export default function Competition() {
+export default function Competition({ data }) {
   return (
     <Accordion chevronPosition="right" variant="contained">
       <Accordion.Item value="competition">
@@ -22,12 +18,14 @@ export default function Competition() {
           <Group noWrap>
             <Avatar src="/street_jiujitsu.webp" radius="xl" size="lg" />
             <div>
-              <Text weight={600}>스트릿 주짓수 서울 오픈</Text>
-              <Text size="sm" color="dimmed" weight={400}>
-                2023.07.30(일) 9:30 AM
+              <Text size="sm" weight={600}>
+                {data.competitionTitle}
               </Text>
               <Text size="sm" color="dimmed" weight={400}>
-                SETEC 2전시장
+                {data.competitionDate}
+              </Text>
+              <Text size="sm" color="dimmed" weight={400}>
+                {data.competitionLocation}
               </Text>
             </div>
           </Group>
@@ -35,10 +33,10 @@ export default function Competition() {
         <Accordion.Panel>
           <List spacing="sm">
             <List.Item>
-              <Flex align="center" gap="md">
-                <Text size="sm">주소</Text>
+              <Flex align="center" gap="sm">
+                <Text size="sm">{data.address}</Text>
 
-                <CopyButton value="https://mantine.dev">
+                <CopyButton value={data.addressDetails}>
                   {({ copied, copy }) => (
                     <Popover
                       width={250}
@@ -47,18 +45,16 @@ export default function Competition() {
                       shadow="sm"
                     >
                       <Popover.Target>
-                        <button className={"flex  flex-col"} onClick={copy}>
-                          <Text size="sm">
-                            서울특별시 강남구 남부순환로 3104
-                          </Text>
+                        <button onClick={copy}>
+                          <Text size="sm">{data.addressDetails}</Text>
                           <Flex align="center" gap="xs">
-                            <Text size="sm">SETEC 2전시장</Text>
+                            <Text size="sm">({data.competitionLocation})</Text>
                             <IconCopy size="1rem" color="skyblue" />
                           </Flex>
                         </button>
                       </Popover.Target>
                       <Popover.Dropdown>
-                        <Text size="sm">주소가 복사되었습니다.</Text>
+                        <Text size="sm">{data.copiedAddress}</Text>
                       </Popover.Dropdown>
                     </Popover>
                   )}
@@ -66,15 +62,15 @@ export default function Competition() {
               </Flex>
             </List.Item>
             <List.Item>
-              <Flex align="center" gap="md">
-                <Text size="sm">링크</Text>
+              <Flex align="center" gap="sm">
+                <Text size="sm">{data.link}</Text>
                 <Text
                   size="sm"
                   component="a"
                   href="https://www.street-jiujitsu.com/"
                   underline
                 >
-                  대회 상세 페이지로 이동하기
+                  {data.linkDetails}
                 </Text>
               </Flex>
             </List.Item>
