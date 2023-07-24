@@ -83,7 +83,7 @@ export default function Page() {
   ));
 
   return (
-    <main className="relative mt-14 flex min-h-screen flex-col gap-4 p-2">
+    <main className="relative mt-14 flex min-h-screen  flex-col gap-4 p-2">
       <Drawer
         opened={burgerOpened}
         onClose={burgerClose}
@@ -100,7 +100,7 @@ export default function Page() {
           defaultValue={filteredNames}
         />
       </Drawer>
-      <section className="fixed top-0 flex w-full items-center justify-between self-center bg-slate-100 p-3">
+      <section className="fixed top-0 z-10 flex w-full items-center justify-between self-center bg-slate-100 p-3">
         <Switch
           labelPosition="left"
           size="md"

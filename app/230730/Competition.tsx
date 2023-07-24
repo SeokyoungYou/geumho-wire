@@ -1,14 +1,4 @@
-import {
-  Accordion,
-  Avatar,
-  CopyButton,
-  Flex,
-  Group,
-  List,
-  Popover,
-  Space,
-  Text,
-} from "@mantine/core";
+import { Accordion, Avatar, Flex, Group, Space, Text } from "@mantine/core";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -32,7 +22,12 @@ export default function Competition({ data }: CompetitionProps) {
       <Accordion.Item value="competition">
         <Accordion.Control>
           <Group noWrap>
-            <Avatar src="/street_jiujitsu.webp" radius="xl" size="lg" />
+            <Avatar
+              className="z-0"
+              src="/street_jiujitsu.webp"
+              radius="xl"
+              size="lg"
+            />
             <div>
               <Text size="sm" weight={600}>
                 {data.competitionTitle}
