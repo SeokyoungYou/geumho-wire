@@ -10,12 +10,10 @@ import {
   Text,
   Title,
   Image,
-  Burger,
   Drawer
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconInfoCircle, IconPhotoSearch } from "@tabler/icons-react";
-// import Image from "next/image";
+import { IconInfoCircle,  IconMenu2, IconPhotoSearch } from "@tabler/icons-react";
 import { useState } from "react";
 import Competition from "./Competition";
 import en from "./en.json";
@@ -41,7 +39,7 @@ export default function Page() {
   const [locale, setLocale] = useState(Locale.ko);
   const t = locale === Locale.ko ? ko : en;
 
-  const [burgerOpened, { open : burgerOpen, close : burgerClose, toggle : burgerToggle }] = useDisclosure(false);
+  const [burgerOpened, { close : burgerClose, toggle : burgerToggle }] = useDisclosure(false);
   const label = opened ? 'Close navigation' : 'Open navigation';
 
   const rows = t.competitors.map((element) => (
@@ -80,9 +78,10 @@ export default function Page() {
             setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
           }}
         />
-        <Burger opened={burgerOpened} onClick={()=>{
-          burgerToggle();
-        }} aria-label={label} />
+        <ActionIcon onClick={burgerToggle}>
+          <IconMenu2 size="2rem"/>
+        </ActionIcon>
+
       </section>
       <section>
         <Competition data={t.competition} />
