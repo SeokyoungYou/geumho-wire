@@ -10,8 +10,6 @@ import {
   Text,
   Title,
   Image,
-  Drawer,
-  MultiSelect,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -22,8 +20,8 @@ import {
 import React, { useEffect, useState } from "react";
 
 import Competition from "./Competition";
-import en from "./en.json";
-import ko from "./ko.json";
+import FilterDrawer from "./FilterDrawer";
+import useLocale, { Locale } from "./useLocale";
 
 type Person = {
   name: string;
@@ -33,29 +31,22 @@ type Person = {
   leagueTable: string;
 };
 
-enum Locale {
-  ko = "ko",
-  en = "en",
-}
-
 export default function Page() {
   const [opened, { open, close }] = useDisclosure(false);
   const [clickedPerson, setClickedPerson] = useState<Person>();
 
-  const [locale, setLocale] = useState(Locale.ko);
-  const t = locale === Locale.ko ? ko : en;
-  const [names, setNames] = useState<string[]>(
-    t.competitors.map((c) => c.name),
-  );
-  const [filteredNames, setFilteredNames] = useState<string[]>(names);
+  const { locale, t, setLocale, initialNames } = useLocale();
+
+  const [names, setNames] = useState(initialNames);
+  const [filteredNames, setFilteredNames] = useState(names);
 
   const [burgerOpened, { close: burgerClose, open: burgerOpen }] =
     useDisclosure(false);
 
   useEffect(() => {
-    setNames(t.competitors.map((c) => c.name));
-    setFilteredNames(t.competitors.map((c) => c.name));
-  }, [t.competitors]);
+    setNames(initialNames);
+    setFilteredNames(initialNames);
+  }, [initialNames]);
 
   const rows = t.competitors.map((element) => (
     <React.Fragment key={element.name}>
@@ -84,26 +75,17 @@ export default function Page() {
 
   return (
     <main className="relative mt-14 flex min-h-screen  flex-col gap-4 p-2">
-      <Drawer
-        opened={burgerOpened}
-        onClose={burgerClose}
-        title="Filter"
-        size="xs"
-        position="right"
-        transitionProps={{ transition: "slide-left" }}
-      >
-        <MultiSelect
-          onChange={(e) => setFilteredNames(e)}
-          data={names}
-          label={t.table.name}
-          placeholder="Select Names"
-          defaultValue={filteredNames}
-        />
-      </Drawer>
+      <FilterDrawer
+        burgerOpened={burgerOpened}
+        burgerClose={burgerClose}
+        setFilteredNames={setFilteredNames}
+        names={names}
+        label={t.table.name}
+        filteredNames={filteredNames}
+      />
       <section className="fixed top-0 z-10 flex w-full items-center justify-between self-center bg-slate-100 p-3">
         <Switch
           radius="lg"
-          labelPosition="left"
           size="md"
           onLabel="영어(EN)"
           offLabel="한국어(KO)"
