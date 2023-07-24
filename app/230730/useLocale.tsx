@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import en from "./en.json";
-import ko from "./ko.json";
+import en from "./locale/en.json";
+import ko from "./locale/ko.json";
 export enum Locale {
   ko = "ko",
   en = "en",
