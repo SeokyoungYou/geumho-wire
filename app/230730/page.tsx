@@ -40,7 +40,7 @@ export default function Page() {
   }, [initialNames]);
 
   return (
-    <main className="relative mt-14 flex min-h-screen  flex-col gap-4 p-2">
+    <main className="relative mt-14 flex min-h-screen flex-col gap-4 p-2">
       <FilterDrawer
         burgerOpened={burgerOpened}
         burgerClose={burgerClose}
