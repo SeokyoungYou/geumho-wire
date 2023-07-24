@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <main className="relative flex flex-col min-h-screen gap-4 p-2 mt-14">
-      <Drawer opened={burgerOpened} onClose={burgerClose} title="Filter" size="xs"     transitionProps={{ duration: 0 }}>
+      <Drawer opened={burgerOpened} onClose={burgerClose} title="Filter" size="xs" position="right" transitionProps={{ transition: 'slide-left' }}>
         {/* Drawer content */}
       </Drawer>
       <section className="fixed top-0 flex items-center self-center justify-between w-full p-3 bg-slate-100">
