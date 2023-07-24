@@ -2,16 +2,18 @@
 
 import {
   ActionIcon,
+  Button,
   Modal,
   Popover,
   Switch,
   Table,
   Text,
   Title,
+  Image
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconInfoCircle } from "@tabler/icons-react";
-import Image from "next/image";
+import { IconInfoCircle, IconPhotoSearch } from "@tabler/icons-react";
+// import Image from "next/image";
 import { useState } from "react";
 import Competition from "./Competition";
 import en from "./en.json";
@@ -43,21 +45,22 @@ export default function Page() {
       <td>{element.name}</td>
       <td>{element.mat}</td>
       <td>
-        <button
+        <Button
+          variant="light"
+          leftIcon={<IconPhotoSearch size="1rem"/>} size="xs"
           onClick={() => {
             setClickedPerson(element);
             open();
           }}
-          className=" bg-sky-200 py-1 px-2 rounded-md"
         >
           {element.division}
-        </button>
+        </Button>
       </td>
     </tr>
   ));
 
   return (
-    <main className="flex min-h-screen flex-col p-2 gap-4 relative">
+    <main className="relative flex flex-col min-h-screen gap-4 p-2">
       <section>
         <Competition data={t.competition} />
       </section>
@@ -95,12 +98,7 @@ export default function Page() {
             title={`${clickedPerson.name}`}
             centered
           >
-            <Image
-              src={clickedPerson.leagueTable}
-              width={500}
-              height={500}
-              alt="대진표 이미지"
-            />
+            <Image maw={330} mx="auto" radius="md"  src={clickedPerson.leagueTable} alt="대진표이미지" />
           </Modal>
         )}
       </section>

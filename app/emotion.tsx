@@ -1,30 +1,31 @@
 "use client";
+
 import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
+import { useEmotionCache, MantineProvider } from "@mantine/core";
 import { useServerInsertedHTML } from "next/navigation";
-import { useState } from "react";
 
 export default function RootStyleRegistry({
   children,
 }: {
-  children: JSX.Element;
+  children: React.ReactNode;
 }) {
-  const [cache] = useState(() => {
-    const cache = createCache({ key: "css" });
-    cache.compat = true;
-    return cache;
-  });
+  const cache = useEmotionCache();
+  cache.compat = true;
 
-  useServerInsertedHTML(() => {
-    return (
-      <style
-        data-emotion={`${cache.key} ${Object.keys(cache.inserted).join(" ")}`}
-        dangerouslySetInnerHTML={{
-          __html: Object.values(cache.inserted).join(" "),
-        }}
-      />
-    );
-  });
+  useServerInsertedHTML(() => (
+    <style
+      data-emotion={`${cache.key} ${Object.keys(cache.inserted).join(" ")}`}
+      dangerouslySetInnerHTML={{
+        __html: Object.values(cache.inserted).join(" "),
+      }}
+    />
+  ));
 
-  return <CacheProvider value={cache}>{children}</CacheProvider>;
+  return (
+    <CacheProvider value={cache}>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        {children}
+      </MantineProvider>
+    </CacheProvider>
+  );
 }

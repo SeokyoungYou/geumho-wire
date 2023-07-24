@@ -14,5 +14,8 @@ module.exports = {
       },
     },
   },
+  corePlugins: {
+    preflight: false, // disable preflight to avoid css reset: Mantine 패키지 충돌 방지
+  },
   plugins: [],
 }
