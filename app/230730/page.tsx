@@ -9,7 +9,9 @@ import {
   Table,
   Text,
   Title,
-  Image
+  Image,
+  Burger,
+  Drawer
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconInfoCircle, IconPhotoSearch } from "@tabler/icons-react";
@@ -35,9 +37,12 @@ enum Locale {
 export default function Page() {
   const [opened, { open, close }] = useDisclosure(false);
   const [clickedPerson, setClickedPerson] = useState<Person>();
-  const [locale, setLocale] = useState(Locale.ko);
 
+  const [locale, setLocale] = useState(Locale.ko);
   const t = locale === Locale.ko ? ko : en;
+
+  const [burgerOpened, { open : burgerOpen, close : burgerClose, toggle : burgerToggle }] = useDisclosure(false);
+  const label = opened ? 'Close navigation' : 'Open navigation';
 
   const rows = t.competitors.map((element) => (
     <tr key={element.name}>
@@ -60,7 +65,25 @@ export default function Page() {
   ));
 
   return (
-    <main className="relative flex flex-col min-h-screen gap-4 p-2">
+    <main className="relative flex flex-col min-h-screen gap-4 p-2 mt-14">
+      <Drawer opened={burgerOpened} onClose={burgerClose} position="right" title="Filter" size="xs">
+        {/* Drawer content */}
+      </Drawer>
+      <section className="fixed top-0 flex items-center self-center justify-between w-full p-3 bg-slate-100">
+        <Switch
+          labelPosition="left"
+          size="md"
+          onLabel="영어(EN)"
+          offLabel="한국어(KO)"
+          label={locale === Locale.ko ? "Change Language" : "언어 변경하기"}
+          onChange={(event) => {
+            setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
+          }}
+        />
+        <Burger opened={burgerOpened} onClick={()=>{
+          burgerToggle();
+        }} aria-label={label} />
+      </section>
       <section>
         <Competition data={t.competition} />
       </section>
@@ -102,18 +125,7 @@ export default function Page() {
           </Modal>
         )}
       </section>
-      <section className="fixed bottom-0 self-center w-full p-3 bg-slate-100">
-        <Switch
-          labelPosition="left"
-          size="md"
-          onLabel="영어(EN)"
-          offLabel="한국어(KO)"
-          label={locale === Locale.ko ? "Change Language" : "언어 변경하기"}
-          onChange={(event) => {
-            setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
-          }}
-        />
-      </section>
+
     </main>
   );
 }
