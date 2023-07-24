@@ -39,7 +39,7 @@ export default function Page() {
   const [locale, setLocale] = useState(Locale.ko);
   const t = locale === Locale.ko ? ko : en;
 
-  const [burgerOpened, { close : burgerClose, toggle : burgerToggle }] = useDisclosure(false);
+  const [burgerOpened, { close : burgerClose, open : burgerOpen }] = useDisclosure(false);
 
   const rows = t.competitors.map((element) => (
     <tr key={element.name}>
@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <main className="relative flex flex-col min-h-screen gap-4 p-2 mt-14">
-      <Drawer opened={burgerOpened} onClose={burgerClose} position="right" title="Filter" size="xs" withOverlay={false}>
+      <Drawer opened={burgerOpened} onClose={burgerClose} title="Filter" size="xs">
         {/* Drawer content */}
       </Drawer>
       <section className="fixed top-0 flex items-center self-center justify-between w-full p-3 bg-slate-100">
@@ -77,7 +77,7 @@ export default function Page() {
             setLocale(event.currentTarget.checked ? Locale.en : Locale.ko);
           }}
         />
-        <ActionIcon onClick={burgerToggle}>
+        <ActionIcon onClick={burgerOpen}>
           <IconMenu2 size="2rem"/>
         </ActionIcon>
 
