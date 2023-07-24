@@ -6,6 +6,7 @@ import {
   Group,
   List,
   Popover,
+  Space,
   Text,
 } from "@mantine/core";
 import { useState } from "react";
@@ -46,40 +47,35 @@ export default function Competition({ data }: CompetitionProps) {
           </Group>
         </Accordion.Control>
         <Accordion.Panel>
-          <List spacing="sm">
-            <List.Item>
-              <Flex align="center" gap="sm">
-                <Text size="sm">{data.address}</Text>
-                <CopyToClipboard
-                  text={data.addressDetails}
-                  onCopy={() => setCopied(true)}
-                >
-                  <button>
-                    <Text size="sm">{data.addressDetails}</Text>
-                    <Flex align="center" gap="xs">
-                      <Text size="sm">({data.competitionLocation})</Text>
-                      <Text size="sm" color={copied ? "teal" : "blue"}>
-                        {copied ? "Copied" : "Copy"}
-                      </Text>
-                    </Flex>
-                  </button>
-                </CopyToClipboard>
-              </Flex>
-            </List.Item>
-            <List.Item>
-              <Flex align="center" gap="sm">
-                <Text size="sm">{data.link}</Text>
-                <Text
-                  size="sm"
-                  component="a"
-                  href="https://www.street-jiujitsu.com/"
-                  underline
-                >
-                  {data.linkDetails}
-                </Text>
-              </Flex>
-            </List.Item>
-          </List>
+          <Flex align="center" gap="sm">
+            <Text size="sm">{data.address}</Text>
+            <CopyToClipboard
+              text={data.addressDetails}
+              onCopy={() => setCopied(true)}
+            >
+              <button>
+                <Text size="sm">{data.addressDetails}</Text>
+                <Flex align="center" gap="xs">
+                  <Text size="sm">({data.competitionLocation})</Text>
+                  <Text size="sm" color={copied ? "teal" : "blue"}>
+                    {copied ? "Copied" : "Copy"}
+                  </Text>
+                </Flex>
+              </button>
+            </CopyToClipboard>
+          </Flex>
+          <Space h="md" />
+          <Flex align="center" gap="sm">
+            <Text size="sm">{data.link}</Text>
+            <Text
+              size="sm"
+              component="a"
+              href="https://www.street-jiujitsu.com/"
+              underline
+            >
+              {data.linkDetails}
+            </Text>
+          </Flex>
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>

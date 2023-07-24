@@ -10,11 +10,12 @@ import {
   Text,
   Title,
   Image,
-  Drawer
+  Drawer,
+  MultiSelect
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconInfoCircle,  IconMenu2, IconPhotoSearch } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Competition from "./Competition";
 import en from "./en.json";
 import ko from "./ko.json";
@@ -38,33 +39,53 @@ export default function Page() {
 
   const [locale, setLocale] = useState(Locale.ko);
   const t = locale === Locale.ko ? ko : en;
+  const [names, setNames] = useState<string[]>(t.competitors.map(c=> c.name));
+  const [filteredNames, setFilteredNames] = useState<string[]>(names);
 
   const [burgerOpened, { close : burgerClose, open : burgerOpen }] = useDisclosure(false);
 
+
+  useEffect(()=> {
+    setNames(t.competitors.map(c=> c.name));
+    setFilteredNames(t.competitors.map(c=> c.name));
+  }, [locale])
+
   const rows = t.competitors.map((element) => (
-    <tr key={element.name}>
-      <td>{element.time}</td>
-      <td>{element.name}</td>
-      <td>{element.mat}</td>
-      <td>
-        <Button
-          variant="light"
-          leftIcon={<IconPhotoSearch size="1rem"/>} size="xs"
-          onClick={() => {
-            setClickedPerson(element);
-            open();
-          }}
-        >
-          {element.division}
-        </Button>
-      </td>
-    </tr>
+    <>
+      {filteredNames.includes(element.name) && (
+        <tr key={element.name}>
+          <td>{element.time}</td>
+          <td>{element.name}</td>
+          <td>{element.mat}</td>
+          <td>
+            <Button
+              variant="light"
+              leftIcon={<IconPhotoSearch size="1rem"/>} size="xs"
+              onClick={() => {
+                setClickedPerson(element);
+                open();
+              }}
+              >
+              {element.division}
+            </Button>
+          </td>
+        </tr>
+      )}
+    </>
   ));
+
+
 
   return (
     <main className="relative flex flex-col min-h-screen gap-4 p-2 mt-14">
       <Drawer opened={burgerOpened} onClose={burgerClose} title="Filter" size="xs" position="right" transitionProps={{ transition: 'slide-left' }}>
-        {/* Drawer content */}
+        <MultiSelect
+          onChange={(e)=> setFilteredNames(e)}
+          data={names}
+          label={t.table.name}
+          placeholder="Select Names"
+          defaultValue={filteredNames}
+        />
       </Drawer>
       <section className="fixed top-0 flex items-center self-center justify-between w-full p-3 bg-slate-100">
         <Switch
@@ -80,7 +101,6 @@ export default function Page() {
         <ActionIcon onClick={burgerOpen}>
           <IconMenu2 size="2rem"/>
         </ActionIcon>
-
       </section>
       <section>
         <Competition data={t.competition} />
