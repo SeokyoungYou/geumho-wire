@@ -102,6 +102,7 @@ export default function Page() {
       </Drawer>
       <section className="fixed top-0 z-10 flex w-full items-center justify-between self-center bg-slate-100 p-3">
         <Switch
+          radius="lg"
           labelPosition="left"
           size="md"
           onLabel="영어(EN)"
