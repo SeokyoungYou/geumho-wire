@@ -40,7 +40,6 @@ export default function Page() {
   const t = locale === Locale.ko ? ko : en;
 
   const [burgerOpened, { close : burgerClose, toggle : burgerToggle }] = useDisclosure(false);
-  const label = opened ? 'Close navigation' : 'Open navigation';
 
   const rows = t.competitors.map((element) => (
     <tr key={element.name}>
@@ -64,7 +63,7 @@ export default function Page() {
 
   return (
     <main className="relative flex flex-col min-h-screen gap-4 p-2 mt-14">
-      <Drawer opened={burgerOpened} onClose={burgerClose} position="right" title="Filter" size="xs">
+      <Drawer opened={burgerOpened} onClose={burgerClose} position="right" title="Filter" size="xs" withOverlay={false}>
         {/* Drawer content */}
       </Drawer>
       <section className="fixed top-0 flex items-center self-center justify-between w-full p-3 bg-slate-100">
