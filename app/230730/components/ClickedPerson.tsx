@@ -28,6 +28,7 @@ const ClickedPerson: React.FC<ClickedPerson> = ({
         radius="md"
         src={clickedPerson.leagueTable}
         alt="대진표이미지"
+        withPlaceholder
       />
     </Modal>
   );
