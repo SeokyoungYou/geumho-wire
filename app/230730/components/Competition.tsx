@@ -1,4 +1,5 @@
 import { Accordion, Avatar, Flex, Group, Space, Text } from "@mantine/core";
+import Image from "next/image";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -70,6 +71,18 @@ export default function Competition({ data }: CompetitionProps) {
             >
               {data.linkDetails}
             </Text>
+          </Flex>
+          <Space h="md" />
+          <Flex align="center" gap="sm">
+            <Image
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="h-auto w-full"
+              src="/230730/230730_timetable.png"
+              alt="시간표"
+              priority
+            />
           </Flex>
         </Accordion.Panel>
       </Accordion.Item>
