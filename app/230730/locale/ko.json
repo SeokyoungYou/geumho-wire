@@ -21,39 +21,39 @@
   },
   "competitors": [
     {
-      "name": "이승영",
-      "time": "13:11",
-      "mat": "3",
+      "name": "이준규",
+      "time": "09:30",
+      "mat": "B",
       "division": "화이트 -70",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_70.png"
     },
     {
-      "name": "이준규",
-      "time": "13:11",
-      "mat": "3",
+      "name": "이승영",
+      "time": "09:30",
+      "mat": "B",
       "division": "화이트 -70",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_70.png"
     },
     {
       "name": "벤",
-      "time": "13:11",
-      "mat": "3",
+      "time": "09:30",
+      "mat": "B",
       "division": "화이트 -82.3",
-      "leagueTable": "/og-img.jpeg"
-    },
-    {
-      "name": "유서경",
-      "time": "12:31",
-      "mat": "1",
-      "division": "화이트 -58.5",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_82.png"
     },
     {
       "name": "유승현",
-      "time": "12:31",
-      "mat": "1",
+      "time": "09:30",
+      "mat": "B",
       "division": "화이트 -88.3",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_88.png"
+    },
+    {
+      "name": "유서경",
+      "time": "13:30",
+      "mat": "A",
+      "division": "화이트 -58.5",
+      "leagueTable": "/230730/230730_58.png"
     }
   ]
 }

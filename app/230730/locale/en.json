@@ -21,39 +21,39 @@
   },
   "competitors": [
     {
-      "name": "Seung-young",
-      "time": "13:11",
-      "mat": "3",
-      "division": "White -70",
-      "leagueTable": "/og-img.jpeg"
-    },
-    {
       "name": "Jun-gyu",
-      "time": "13:11",
-      "mat": "3",
+      "time": "09:30",
+      "mat": "B",
       "division": "White -70",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_70.png"
     },
     {
-      "name": "TATE :)",
-      "time": "13:11",
-      "mat": "3",
+      "name": "Seung-young",
+      "time": "09:30",
+      "mat": "B",
+      "division": "White -70",
+      "leagueTable": "/230730/230730_70.png"
+    },
+    {
+      "name": "TATE 😄",
+      "time": "09:30",
+      "mat": "B",
       "division": "White -82.3",
-      "leagueTable": "/og-img.jpeg"
-    },
-    {
-      "name": "Seo-kyoung",
-      "time": "12:31",
-      "mat": "1",
-      "division": "White -58.5",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_82.png"
     },
     {
       "name": "Seung-hyeon",
-      "time": "12:31",
-      "mat": "1",
+      "time": "09:30",
+      "mat": "B",
       "division": "White -88.3",
-      "leagueTable": "/og-img.jpeg"
+      "leagueTable": "/230730/230730_88.png"
+    },
+    {
+      "name": "Seo-kyoung",
+      "time": "13:30",
+      "mat": "A",
+      "division": "White -58.5",
+      "leagueTable": "/230730/230730_58.png"
     }
   ]
 }
