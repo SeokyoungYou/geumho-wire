@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import { IconPhotoSearch } from "@tabler/icons-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Person } from "../page";
 
@@ -24,8 +24,9 @@ const TableRow: React.FC<TableRowProps> = ({ element, filteredNames }) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
