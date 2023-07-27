@@ -13,24 +13,16 @@ type TableRowProps = {
 const TableRow: React.FC<TableRowProps> = ({ element, filteredNames }) => {
   const [pictureOpen, setPictureOpen] = React.useState(false);
 
-  const buttonRef = React.useRef(null);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
-    const targetElement = event.target;
-
     if (
       buttonRef.current &&
-      isNode(targetElement) &&
-      !buttonRef.current.contains(targetElement)
+      !buttonRef.current.contains(event.target as Node)
     ) {
       setPictureOpen(false);
     }
   };
-
-  // Type Guard to check if a value is a Node
-  function isNode(value: EventTarget | null): value is Node {
-    return value instanceof Node;
-  }
 
   React.useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
