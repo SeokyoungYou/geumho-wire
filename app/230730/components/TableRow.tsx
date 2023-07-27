@@ -17,8 +17,8 @@ const TableRow: React.FC<TableRowProps> = ({ element, filteredNames }) => {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      buttonRef.current &&
-      !buttonRef.current.contains(event.target as Node)
+      event.target instanceof Node &&
+      !buttonRef.current?.contains(event.target)
     ) {
       setPictureOpen(false);
     }
