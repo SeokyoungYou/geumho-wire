@@ -11,7 +11,7 @@ const ConfirmModal: React.FC<ConfirmModal> = ({ onOk, onCancel }) => {
     onCancel();
   };
   return (
-    <section className="fixed inset-0 z-20 flex items-start justify-center">
+    <section className="fixed inset-0 z-20 flex items-start justify-center bg-black/50">
       <div className=" flex flex-col bg-amber-300 p-1">
         <header>Confirm modal</header>
         <div className="flex flex-col items-center justify-center gap-4 bg-amber-200 px-10 py-6">

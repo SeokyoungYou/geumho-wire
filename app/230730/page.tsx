@@ -1,6 +1,6 @@
 "use client";
 
-import { Accordion, ActionIcon, Button, Table, Title } from "@mantine/core";
+import { ActionIcon, Table, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu2 } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
@@ -9,11 +9,10 @@ import Competition from "./components/Competition";
 import FilterDrawer from "./components/FilterDrawer";
 import LocaleToggleSwitch from "./components/LocaleToggleSwitch";
 import TableRow from "./components/TableRow";
+import TestAccordion from "./components/TestAccordion";
 import useLocale from "./useLocale";
 
-import ConfirmModal from "@/components/ConfirmModal";
 import PopoverInformation from "@/components/PopoverInformation";
-import useModal from "@/hooks/useModal";
 
 export type Person = {
   name: string;
@@ -37,7 +36,6 @@ export default function Page() {
     setFilteredNames(initialNames);
   }, [initialNames]);
 
-  const { isShowing, open, close } = useModal();
   return (
     <main className="relative mt-14 flex min-h-screen flex-col gap-4 p-2">
       <FilterDrawer
@@ -84,28 +82,7 @@ export default function Page() {
           </tbody>
         </Table>
       </section>
-
-      <Accordion className="mt-40" defaultValue="customization">
-        <Accordion.Item value="customization">
-          <Accordion.Control>Components Tests</Accordion.Control>
-          <Accordion.Panel>
-            <Button onClick={open}>Open Modal</Button>
-          </Accordion.Panel>
-        </Accordion.Item>
-      </Accordion>
-
-      {isShowing && (
-        <ConfirmModal
-          onOk={() => {
-            console.log("ok");
-            close();
-          }}
-          onCancel={() => {
-            console.log("cancel");
-            close();
-          }}
-        />
-      )}
+      <TestAccordion />
     </main>
   );
 }
