@@ -5,7 +5,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconMenu2 } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
 
-import ClickedPerson from "./components/ClickedPerson";
 import Competition from "./components/Competition";
 import FilterDrawer from "./components/FilterDrawer";
 import LocaleToggleSwitch from "./components/LocaleToggleSwitch";
@@ -23,9 +22,6 @@ export type Person = {
 };
 
 export default function Page() {
-  const [opened, { open, close }] = useDisclosure(false);
-  const [clickedPerson, setClickedPerson] = useState<Person>();
-
   const { locale, t, setLocale, initialNames } = useLocale();
 
   const [names, setNames] = useState(initialNames);
@@ -80,18 +76,10 @@ export default function Page() {
                 key={element.name}
                 element={element}
                 filteredNames={filteredNames}
-                setClickedPerson={setClickedPerson}
-                open={open}
               />
             ))}
           </tbody>
         </Table>
-
-        <ClickedPerson
-          opened={opened}
-          clickedPerson={clickedPerson}
-          close={close}
-        />
       </section>
     </main>
   );
